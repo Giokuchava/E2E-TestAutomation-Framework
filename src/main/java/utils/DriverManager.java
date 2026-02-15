@@ -10,6 +10,8 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 
 
+
+
 import java.time.Duration;
 
 /**
@@ -77,49 +79,24 @@ public class DriverManager {
                 break;
 
             case "brave":
-               /* WebDriverManager.chromedriver().setup();
+                WebDriverManager.chromedriver().setup();
 
                 ChromeOptions braveOptions = new ChromeOptions();
                 braveOptions.setBinary("/Applications/Brave Browser.app/Contents/MacOS/Brave Browser");
-                braveOptions.setExperimentalOption("detach", true); // Chrome/Brave stays open after test
+               // WebDriver driver = new ChromeDriver(braveOptions);
+                //driver.manage().window().maximize();
 
-               /* if (ConfigReader.isHeadless()) {
-                    braveOptions.addArguments("--headless=new");
-                }
-
-               braveOptions.addArguments("--remote-allow-origins=*");
+                // Essential options
+                braveOptions.addArguments("--disable-features=DialMediaRouteProvider");
                 braveOptions.addArguments("--start-maximized");
                 braveOptions.addArguments("--disable-notifications");
-                braveOptions.addArguments("--no-sandbox");
-                braveOptions.addArguments("--disable-dev-shm-usage");
-                braveOptions.addArguments("--disable-blink-features=AutomationControlled");
-
-                braveOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
-                braveOptions.setExperimentalOption("useAutomationExtension", false);
-
-                webDriver = new ChromeDriver(braveOptions);
-                break;
-                */
-
-
-                System.setProperty("webdriver.chrome.driver", "/opt/homebrew/bin/chromedriver");
-
-                // Make sure WebDriverManager is set up
-                WebDriverManager.chromedriver().setup();
-
-                // ChromeOptions for Brave
-                ChromeOptions braveOptions = new ChromeOptions();
-                braveOptions.setBinary("/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"); // correct macOS path
-                braveOptions.setExperimentalOption("detach", true); // keeps browser open after test
-                braveOptions.addArguments("--start-maximized");
-                braveOptions.addArguments("--disable-notifications");
+                braveOptions.addArguments("--remote-allow-origins=*");
                 braveOptions.addArguments("--disable-blink-features=AutomationControlled");
 
                 if (ConfigReader.isHeadless()) {
                     braveOptions.addArguments("--headless=new");
                 }
 
-                // Launch WebDriver
                 webDriver = new ChromeDriver(braveOptions);
                 break;
 

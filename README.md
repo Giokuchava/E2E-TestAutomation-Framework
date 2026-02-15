@@ -15,16 +15,6 @@ This project is a comprehensive test automation framework covering both UI and A
 
 ---
 
-### 👥 Group Members
-
-| Name | Email | Test Cases Automated |
-|------|-------|---------------------|
-| Member 1 | email1@example.com | UI: TC01, TC02, TC03, TC04 / API: API01, API02 |
-| Member 2 | email2@example.com | UI: TC05, TC06, TC07 / API: API03, API04, API05 |
-| Member 3 | email3@example.com | UI: TC08, TC09 / API: API06, API07, API08 |
-| Member 4 | email4@example.com | UI: TC10 / API: API09, API10 |
-
----
 
 ### 📁 Project Structure
 
@@ -205,36 +195,9 @@ Allure reports include:
 
 ---
 
-### 🤝 Contributing
 
-Each team member should:
-1. Create a feature branch for their test cases
-2. Commit regularly with meaningful messages
-3. Create pull requests for review
-4. Follow Java coding standards
 
----
 
-### 📧 Contact
 
-For questions or issues, please contact:
-- Project Lead: [email@example.com]
-- GitHub Issues: [Repository Issues Page]
 
----
 
-### 📅 Project Timeline
-
-- **Start Date:** [Date]
-- **Deadline:** February 12, 2026
-- **Submission:** GitHub repository URL via email
-
----
-
-### ⚠️ Important Notes
-
-- No ZIP files or screenshots allowed
-- Repository must be public
-- All dependencies managed via Maven
-- Follow POM design pattern strictly
-- No hard-coded waits permitted

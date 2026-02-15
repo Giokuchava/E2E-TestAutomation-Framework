@@ -58,6 +58,17 @@ public class WaitHelper {
     }
 
     /**
+     * Wait for element to be invisible with custom timeout
+     * @param locator element locator
+     * @param timeoutInSeconds custom timeout
+     * @return true if element becomes invisible
+     */
+    public boolean waitForElementInvisible(By locator, int timeoutInSeconds) {
+        WebDriverWait customWait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+        return customWait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
+
+    /**
      * Wait for text to be present in element
      * @param locator element locator
      * @param text expected text

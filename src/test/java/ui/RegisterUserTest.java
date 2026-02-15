@@ -75,6 +75,12 @@ public class RegisterUserTest extends BaseTest {
         // Logout after registration to test login functionality
         homePage.clickLogout();
 
+        System.out.println("=== RegisterUserTest - Credentials Stored ===");
+        System.out.println("Registered Email: " + registeredEmail);
+        System.out.println("Registered Password: " + registeredPassword);
+        System.out.println("Registered Name: " + registeredName);
+        System.out.println("===========================================");
+
         Allure.step("User registered successfully and logged out. Credentials saved for login test.");
     }
 
