@@ -40,8 +40,13 @@ public class HomePage extends BasePage {
     }
 
     @Step("Click on Logout link")
-    public void clickLogout() {
+    public SignupLoginPage clickLogout() {
         click(logoutLink);
+
+        // Wait for redirect to login page after logout
+        waitHelper.waitForElementInvisible(loggedInUser);
+
+        return new SignupLoginPage(driver);
     }
 
     @Step("Click on Delete Account link")

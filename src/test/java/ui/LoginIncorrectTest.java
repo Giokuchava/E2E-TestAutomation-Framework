@@ -29,7 +29,11 @@ public class LoginIncorrectTest extends BaseTest {
         HomePage homePage = new HomePage(driver);
         SignupLoginPage signupLoginPage = homePage.clickSignupLogin();
 
-        signupLoginPage.performLogin(email, password);
+        // Don't use performLogin() - it expects success
+        // Instead, do manual login for error case
+        signupLoginPage.enterLoginEmail(email);
+        signupLoginPage.enterLoginPassword(password);
+        signupLoginPage.clickLoginButton();
 
         // Verify error message is displayed
         Assert.assertTrue(signupLoginPage.isLoginErrorMessageDisplayed(),

@@ -77,10 +77,38 @@ public class SignupLoginPage extends BasePage {
     }
 
     @Step("Perform login with email: {email}")
-    public void performLogin(String email, String password) {
+    public HomePage performLogin(String email, String password) {
+        System.out.println("=== performLogin Debug ===");
+        System.out.println("Attempting login with email: " + email);
+        System.out.println("Password length: " + (password != null ? password.length() : "null"));
+
         enterLoginEmail(email);
         enterLoginPassword(password);
         clickLoginButton();
+
+        System.out.println("Login button clicked, waiting for result...");
+
+        // Wait for either success or failure
+        HomePage homePage = new HomePage(driver);
+
+        try {
+            // Wait up to 5 seconds for "Logged in as" element to appear (success)
+            By loggedInElement = By.xpath("//a[contains(text(),'Logged in as')]");
+            waitHelper.waitForElementVisible(loggedInElement, 5);
+            System.out.println("✅ Login successful - 'Logged in as' element found");
+            return homePage;
+        } catch (Exception e) {
+            System.out.println("❌ 'Logged in as' element not found, checking for error...");
+            // Check if we got an error message instead
+            if (isLoginErrorMessageDisplayed()) {
+                String errorMsg = getLoginErrorMessage();
+                System.out.println("Error message displayed: " + errorMsg);
+                throw new RuntimeException("Login failed: " + errorMsg);
+            }
+            // If no error message either, page might still be loading
+            System.out.println("No error message found either. Current URL: " + driver.getCurrentUrl());
+            throw new RuntimeException("Login failed: Neither success nor error message appeared. Email: " + email);
+        }
     }
 
     @Step("Verify login error message is displayed")
